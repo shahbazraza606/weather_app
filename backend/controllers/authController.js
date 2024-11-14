@@ -1,4 +1,3 @@
-// controllers/authController.js
 const jwt = require('jsonwebtoken');
 const { OAuth2Client } = require('google-auth-library');
 const User = require('../models/userModel');
@@ -12,6 +11,7 @@ const loginWithGoogle = async (req, res) => {
   const { token } = req.body;
 
   try {
+   
     const ticket = await client.verifyIdToken({
       idToken: token,
       audience: process.env.GOOGLE_CLIENT_ID,
@@ -23,11 +23,17 @@ const loginWithGoogle = async (req, res) => {
     let user = await User.findOne({ googleId });
     if (!user) {
       user = new User({ googleId, email, name });
-      await user.save();
     }
 
+    // It updated the last login time in database
+    user.lastLogin = new Date();
+    await user.save();
+
+    // Generated a jwt token for authentication
     const jwtToken = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.status(200).json({ token: jwtToken, message: 'Login successful' });
+
+    
+    res.status(200).json({ token: jwtToken, name: name, message: 'Login successful' });
   } catch (error) {
     console.error('Error during Google OAuth verification:', error);
     res.status(500).json({ message: 'Authentication failed' });

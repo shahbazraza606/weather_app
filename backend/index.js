@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
-
+const weatherRoutes = require('./routes/weatherRoutes');
 
 dotenv.config({ path: './config/.env' });
 
@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopol
   .catch((err) => console.error('MongoDB connection error:', err));
 
 app.use('/auth', authRoutes);
+app.use('/api', weatherRoutes);
 
 
 app.listen(port, () => {
