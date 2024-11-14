@@ -44,7 +44,17 @@ A responsive weather application built with React and Material-UI. The app allow
     cd frontend
     npm start
 3. Backend
-   Env file is already pushed for your easy to use testing
+   Create a folder after navigation to backend.
+   ```bash
+   mkdir .env
+
+   Enter your secret credentials for the following:
+   GOOGLE_CLIENT_ID
+   GOOGLE_CLIENT_SECRET
+   JWT_SECRET
+   MONGO_URI
+   WEATHER_API_KEY
+
    ```bash
    cd backend
    npm start
