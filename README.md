@@ -46,6 +46,7 @@ A responsive weather application built with React and Material-UI. The app allow
 3. Backend
    Create a folder after navigation to backend.
    ```bash
+   cd backend
    mkdir .env
 
 Enter your secret credentials for the following:
@@ -56,5 +57,4 @@ Enter your secret credentials for the following:
 - WEATHER_API_KEY
 
    ```bash
-   cd backend
    npm start
