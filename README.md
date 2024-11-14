@@ -48,12 +48,12 @@ A responsive weather application built with React and Material-UI. The app allow
    ```bash
    mkdir .env
 
-   Enter your secret credentials for the following:
-   GOOGLE_CLIENT_ID
-   GOOGLE_CLIENT_SECRET
-   JWT_SECRET
-   MONGO_URI
-   WEATHER_API_KEY
+Enter your secret credentials for the following:
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET
+JWT_SECRET
+MONGO_URI
+WEATHER_API_KEY
 
    ```bash
    cd backend
